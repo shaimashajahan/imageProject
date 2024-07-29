@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(179, 179, 204);"><center>
+        <table border="1" style="text-align: center;color: purple;background-color:  azure;">
+            <tr>
+            <th style="color: crimson;"><br>PRODUCT NAME</th>
+            <th style="color: crimson;"><br>PRODUCT PRICE</th>
+            <th style="color: crimson;"><br>PRODUCT QUANTITY</th>
+            <th style="color: crimson;"><br>PRODUCT IMAGE</th>
+            <th style="color: crimson;"><br>ACTION</th>
+            </tr>
+            <tbody>
+                {% for p in product %}
+            <tr>
+                <td>{{ p.Product_name }}</td>
+                <td>{{ p.Product_price }}</td>
+                <td>{{ p.Product_qty }}</td>
+                <td>
+                    {{ p.image }} <br>
+                    <img src="{{ p.image.url }}" style="height: 100px;width: 150px;">
+                </td>
+                <td><a href="{% url 'updatepage' p.id %}">Update</a><br>
+                    <a href="{% url 'deletepage' p.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </center>
+</body>
+</html>
